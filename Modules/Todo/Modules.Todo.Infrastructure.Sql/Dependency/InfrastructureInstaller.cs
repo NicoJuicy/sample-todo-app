@@ -22,17 +22,12 @@ namespace Modules.Todo.Infrastructure.Sql.Dependency
     {
         protected override void Load(ContainerBuilder builder)
         {
-            //postgres://undhnwrj:LhVyK-AlDR4PnJ83mhLMZKD5XqqWl_cR@kandula.db.elephantsql.com:5432/undhnwrj
-            builder.RegisterInstance<TodoDbContext>(CreateDb("Data Source=DESKTOP-JH34EEG\\SQLEXPRESS;Initial Catalog=Temp.Todo;Integrated Security=True")).SingleInstance();
-
+            builder.RegisterInstance<TodoDbContext>(InitSqlDb("Data Source=DESKTOP-JH34EEG\\SQLEXPRESS;Initial Catalog=Temp.Todo;Integrated Security=True")).SingleInstance();
             builder.RegisterType<TodoRepository>().As<ITodoRepository>().InstancePerRequest();
-
             builder.RegisterType<Modules.Todo.Infrastructure.Sql.Mapper.TodoProfile>().As<Profile>();
-
-
         }
 
-        private static TodoDbContext CreateDb(string connString)
+        private static TodoDbContext InitSqlDb(string connString)
         {
             return new TodoDbContext(connString);
 
