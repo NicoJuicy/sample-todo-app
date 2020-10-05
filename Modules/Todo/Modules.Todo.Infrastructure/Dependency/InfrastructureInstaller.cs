@@ -1,4 +1,4 @@
-﻿//Copyright 2020 - 2020 Nico Sap - <nico@sapico.me>
+﻿//Copyright 2020 - 2020  
 
 namespace Modules.Todo.Infrastructure.Dependency
 {
@@ -22,7 +22,7 @@ namespace Modules.Todo.Infrastructure.Dependency
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterInstance<IDocumentStore>(CreateDocumentStore("User ID=undhnwrj;Password=LhVyK-;Database=undhnwrj;Host=kandula.db.elephantsql.com;Port=5432")).SingleInstance();
+            builder.RegisterInstance<IDocumentStore>(CreateDocumentStore("User ID=undhnwrj;Password=LhVyK-AlDR4PnJ83mhLMZKD5XqqWl_cR;Database=undhnwrj;Host=kandula.db.elephantsql.com;Port=5432")).SingleInstance();
             builder.Register<IDocumentSession>(ctx => CreateSession(ctx.Resolve<IDocumentStore>())).InstancePerRequest();
             builder.RegisterType<TodoRepository>().As<ITodoRepository>().InstancePerRequest();
 
@@ -48,6 +48,8 @@ namespace Modules.Todo.Infrastructure.Dependency
                     {
                         idx.SortOrder = SortOrder.Asc;
                     });
+
+                _.Schema.For<Documents.TodoDocument>().SoftDeleted();
 
                 var indexedColumns = new Expression<Func<Documents.TodoDocument, object>>[]
                 {

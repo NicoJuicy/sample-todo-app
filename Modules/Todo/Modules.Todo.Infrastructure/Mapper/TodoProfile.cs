@@ -1,4 +1,4 @@
-﻿//Copyright 2020 - 2020 Nico Sap - <nico@sapico.me>
+﻿//Copyright 2020 - 2020  
 
 namespace Modules.Todo.Infrastructure.Mapper
 {
@@ -12,12 +12,12 @@ namespace Modules.Todo.Infrastructure.Mapper
     {
         public TodoProfile()
         {
-                 CreateMap<Documents.TodoDocument, Core.Entities.TodoAggregate>()
-                .ForMember(dst => dst.Id, opt => opt.MapFrom(src => new AggregateId( src.Id)))
-                .ForMember(dst => dst.On, opt => opt.MapFrom(src => src.On))
-                .ForMember(dst => dst.FinishedOn, opt => opt.MapFrom(src => src.FinishedOn))
-                .ForMember(dst => dst.Description, opt => opt.MapFrom(src => src.Description))
-                .ForMember(dst => dst.IsActive, opt => opt.MapFrom(src => src.IsActive));
+            CreateMap<Documents.TodoDocument, Core.Entities.TodoAggregate>()
+           .ForMember(dst => dst.Id, opt => opt.MapFrom(src => new AggregateId(src.Id)))
+           .ForMember(dst => dst.On, opt => opt.MapFrom(src => src.On))
+           .ForMember(dst => dst.FinishedOn, opt => opt.MapFrom(src => src.FinishedOn))
+           .ForMember(dst => dst.Description, opt => opt.MapFrom(src => src.Description))
+           .ForMember(dst => dst.IsActive, opt => opt.MapFrom(src => src.IsActive));
 
 
             CreateMap<Core.Entities.TodoAggregate, Documents.TodoDocument>()

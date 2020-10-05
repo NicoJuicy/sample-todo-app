@@ -1,4 +1,4 @@
-﻿//Copyright 2020 - 2020 Nico Sap - <nico@sapico.me>
+﻿//Copyright 2020 - 2020  
 
 namespace Modules.Todo.Api.Controllers
 {

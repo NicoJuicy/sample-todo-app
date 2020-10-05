@@ -1,4 +1,4 @@
-﻿//Copyright 2020 - 2020 Nico Sap - <nico@sapico.me>
+﻿//Copyright 2020 - 2020 Nico Sap 
 
 namespace Modules.Todo.Infrastructure.Repositories
 {
@@ -9,6 +9,7 @@ namespace Modules.Todo.Infrastructure.Repositories
     using AutoMapper;
     using BuildingBlock.Specification;
     using Marten;
+    using Marten.Linq.SoftDeletes;
     using Modules.Todo.Core.Entities;
     using Modules.Todo.Core.Repositories;
     using Modules.Todo.Core.Specifications;
@@ -58,7 +59,6 @@ namespace Modules.Todo.Infrastructure.Repositories
             var item = await m_session.Query<Documents.TodoDocument>().FirstOrDefaultAsync(el => el.Id == id);
             return m_mapper.Map<TodoAggregate>(item);
         }
-
 
         public async Task Save(TodoAggregate item)
         {
