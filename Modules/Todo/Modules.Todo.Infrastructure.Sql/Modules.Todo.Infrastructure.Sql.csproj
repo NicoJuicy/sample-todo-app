@@ -65,7 +65,7 @@
       <DependentUpon>202010052143068_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="TodoDbContext.cs" />
-    <Compile Include="Depdendency\InfrastructureInstaller.cs" />
+    <Compile Include="Dependency\InfrastructureInstaller.cs" />
     <Compile Include="Entity\Todo.cs" />
     <Compile Include="Mapper\TodoProfile.cs" />
     <Compile Include="Migrations\Configuration.cs" />
