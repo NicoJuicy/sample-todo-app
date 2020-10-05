@@ -22,14 +22,11 @@ namespace Modules.Todo.Infrastructure.Dependency
     {
         protected override void Load(ContainerBuilder builder)
         {
-            //postgres://undhnwrj:LhVyK-AlDR4PnJ83mhLMZKD5XqqWl_cR@kandula.db.elephantsql.com:5432/undhnwrj
             builder.RegisterInstance<IDocumentStore>(CreateDocumentStore("User ID=undhnwrj;Password=LhVyK-AlDR4PnJ83mhLMZKD5XqqWl_cR;Database=undhnwrj;Host=kandula.db.elephantsql.com;Port=5432")).SingleInstance();
             builder.Register<IDocumentSession>(ctx => CreateSession(ctx.Resolve<IDocumentStore>())).InstancePerRequest();
             builder.RegisterType<TodoRepository>().As<ITodoRepository>().InstancePerRequest();
 
             builder.RegisterType<Modules.Todo.Infrastructure.Mapper.TodoProfile>().As<Profile>();
-
-
         }
 
         private static IDocumentSession CreateSession(IDocumentStore documentStore)
@@ -48,9 +45,9 @@ namespace Modules.Todo.Infrastructure.Dependency
                 _.PLV8Enabled = false; // https://jasperfx.github.io/marten/documentation/documents/advanced/javascript_transformations/
 
                 _.Schema.For<Documents.TodoDocument>().Duplicate(el => el.Description, configure: idx =>
-        {
-            idx.SortOrder = SortOrder.Asc;
-        });
+                    {
+                        idx.SortOrder = SortOrder.Asc;
+                    });
 
                 var indexedColumns = new Expression<Func<Documents.TodoDocument, object>>[]
                 {
