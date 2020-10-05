@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div ng-controller="TodosController" ng-init="load()">
+
+
+    <div class="row " id="todoapp">
+        <div class="col-md-6 col-md-offset-3">
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <h3>Todos</h3>
+                    <input class="new-todo form-control" ng-model="description" placeholder="What needs to be done?" autofocus>
+                    <a class="btn" ng-click="create()" href=""><i class="glyphicon glyphicon-plus"></i></a>
+                </div>
+                <div class="panel-body">
+                    <section class="main">
+
+                        <ul class="todo-list">
+
+                            <li class="list-group-item" ng-repeat="todo in todos">
+
+                                <div class="view" ng-if="!canEdit(todo)">
+
+                                    <label><input type="checkbox" value="" class="toggle" ng-checked="!todo.IsActive" ng-click="changeCompletedState(todo, todo.IsActive)">{{todo.Description}}</label>
+
+                                    <a class="btn btn-danger btn-sm destroy pull-right" ng-click="delete(todo);"><i class="glyphicon glyphicon-remove"></i></a>
+                                </div>
+                                <input ng-if="canEdit(todo)" class="edit" value="{{todo.Description}}">
+                            </li>
+
+                        </ul>
+                    </section>
+                </div>
+                <div class="panel-footer">
+
+
+                    <footer class="footer">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="sizing-addon2"><i class="glyphicon glyphicon-search"></i></span>
+                            <input type="text" ng-model="q" class="form-control" placeholder="Searchterm" aria-describedby="sizing-addon2">
+                        </div>
+                        <a class="btn btn-link" ng-click="search()">search</a>
+                    </footer>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
