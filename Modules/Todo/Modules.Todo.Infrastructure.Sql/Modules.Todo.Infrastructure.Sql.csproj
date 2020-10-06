@@ -64,6 +64,10 @@
     <Compile Include="Migrations\202010052143068_Init.Designer.cs">
       <DependentUpon>202010052143068_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010060101498_AdjustActiveFieldsToCompleted.cs" />
+    <Compile Include="Migrations\202010060101498_AdjustActiveFieldsToCompleted.Designer.cs">
+      <DependentUpon>202010060101498_AdjustActiveFieldsToCompleted.cs</DependentUpon>
+    </Compile>
     <Compile Include="TodoDbContext.cs" />
     <Compile Include="Dependency\InfrastructureInstaller.cs" />
     <Compile Include="Entity\Todo.cs" />
@@ -86,6 +90,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202010052143068_Init.resx">
       <DependentUpon>202010052143068_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010060101498_AdjustActiveFieldsToCompleted.resx">
+      <DependentUpon>202010060101498_AdjustActiveFieldsToCompleted.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

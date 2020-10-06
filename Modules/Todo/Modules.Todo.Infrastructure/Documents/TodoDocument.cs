@@ -11,11 +11,11 @@ namespace Modules.Todo.Infrastructure.Documents
     {
         public string Description { get; set; }
 
-        public DateTime? FinishedOn { get; set; }
+        public DateTime? CompletedOn { get; set; }
 
         public Guid Id { get; set; }
 
-        public bool IsActive { get; set; }
+        public bool IsCompleted { get; set; }
 
         public DateTime On { get; set; }
     }

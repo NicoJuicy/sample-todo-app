@@ -10,7 +10,7 @@ namespace Modules.Todo.Core.Specifications
     using Modules.Todo.Core.Entities;
 
     /// <summary>
-    /// Defines the <see cref="TodoByState" />.
+    /// Defines the <see cref="TodoByCompletedState" />.
     /// </summary>
     public class TodoByDescription : ISpecification<Modules.Todo.Core.Entities.TodoAggregate, ITodoSpecificationVisitor>
     {

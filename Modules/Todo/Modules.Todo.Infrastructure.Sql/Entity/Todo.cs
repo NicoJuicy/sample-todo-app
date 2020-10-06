@@ -15,13 +15,13 @@ namespace Modules.Todo.Infrastructure.Sql.Entity
 
         public string Description { get; set; }
 
-        public DateTime? FinishedOn { get; set; }
+        public DateTime? CompletedOn { get; set; }
 
         [Key]
         public Guid Id { get; set; }
 
         [Index()]
-        public bool IsActive { get; set; }
+        public bool IsCompleted { get; set; }
 
         public DateTime On { get; set; }
     }

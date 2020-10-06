@@ -59,7 +59,7 @@
     <Compile Include="Repositories\ITodoRepository.cs" />
     <Compile Include="Specifications\GetAllTodos.cs" />
     <Compile Include="Specifications\TodoByDescription.cs" />
-    <Compile Include="Specifications\TodoByState.cs" />
+    <Compile Include="Specifications\TodoByCompletedState.cs" />
     <Compile Include="Specifications\ITodoSpecificationVisitor.cs" />
     <Compile Include="Specifications\TodoById.cs" />
   </ItemGroup>

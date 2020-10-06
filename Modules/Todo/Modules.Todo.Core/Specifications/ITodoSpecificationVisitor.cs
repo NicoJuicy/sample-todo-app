@@ -9,7 +9,7 @@ namespace Modules.Todo.Core.Specifications
     {
         void Visit(TodoById spec);
 
-        void Visit(TodoByState spec);
+        void Visit(TodoByCompletedState spec);
 
         void Visit(GetAllTodos spec);
 

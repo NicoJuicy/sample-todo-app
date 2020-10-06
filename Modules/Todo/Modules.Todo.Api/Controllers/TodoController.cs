@@ -28,9 +28,9 @@ namespace Modules.Todo.Api.Controllers
         }
         [HttpGet]
         [Route("api/todo/list")]
-        public async Task<List<Dto.TodoDto>> Index(bool? isActive = null, string q = null)
+        public async Task<List<Dto.TodoDto>> Index(bool? isCompleted = null, string q = null)
         {
-            var request = new Modules.Todo.Application.CQRS.Queries.SearchTodoesQuery(isActive, q);
+            var request = new Modules.Todo.Application.CQRS.Queries.SearchTodoesQuery(isCompleted, q);
             var items = await m_mediator.Send(request);
 
             var response = m_mapper.Map<List<Dto.TodoDto>>(items);
@@ -44,7 +44,7 @@ namespace Modules.Todo.Api.Controllers
         {
             try
             {
-                var request = new Modules.Todo.Application.CQRS.Commands.ChangeStateCommand(id, false);
+                var request = new Modules.Todo.Application.CQRS.Commands.ChangeCompletedStateCommand(id, true);
                 await m_mediator.Send(request);
 
                 return true;
@@ -93,7 +93,7 @@ namespace Modules.Todo.Api.Controllers
         {
             try
             {
-                var request = new Modules.Todo.Application.CQRS.Commands.ChangeStateCommand(id, true);
+                var request = new Modules.Todo.Application.CQRS.Commands.ChangeCompletedStateCommand(id, false);
                 await m_mediator.Send(request);
 
                 return true;

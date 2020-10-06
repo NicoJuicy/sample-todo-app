@@ -34,7 +34,7 @@ namespace Modules.Todo.Infrastructure.Sql.Repositories
 
         public async Task<TodoAggregate> Get(Guid id)
         {
-            var entity = await m_dbContext.Todos.Where(dl => dl.Id == id).FirstOrDefaultAsync();
+            var entity = await m_dbContext.Todos.AsNoTracking().Where(dl => dl.Id == id).FirstOrDefaultAsync();
             return m_mapper.Map<TodoAggregate>(entity);
         }
 
@@ -42,7 +42,7 @@ namespace Modules.Todo.Infrastructure.Sql.Repositories
         {
             var expr = m_specVisitor.ConvertSpecToExpression(spec);
 
-            var items = await m_dbContext.Todos.Where(expr).ToListAsync();
+            var items = await m_dbContext.Todos.AsNoTracking().Where(expr).ToListAsync();
             return m_mapper.Map<List<TodoAggregate>>(items.OrderBy(dl => dl.On).ToList());
         }
 
@@ -56,8 +56,9 @@ namespace Modules.Todo.Infrastructure.Sql.Repositories
         public async Task Update(TodoAggregate item)
         {
             var entity = m_mapper.Map<Entity.Todo>(item);
-            m_dbContext.Entry<Entity.Todo>(entity).State = EntityState.Modified;
-
+            var originalEntity = await m_dbContext.Todos.FindAsync(entity.Id);
+            m_dbContext.Entry<Entity.Todo>(originalEntity).CurrentValues.SetValues(entity);
+    
             await m_dbContext.SaveChangesAsync();
         }
     }

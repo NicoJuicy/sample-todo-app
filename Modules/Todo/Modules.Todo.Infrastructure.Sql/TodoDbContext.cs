@@ -9,7 +9,7 @@ namespace Modules.Todo.Infrastructure.Sql
 {
     public class TodoDbContext : DbContext
     {
-        public TodoDbContext() : base("DefaultConnection")
+        public TodoDbContext() : base("Data Source=DESKTOP-JH34EEG\\SQLEXPRESS;Initial Catalog=Temp.Todo;Integrated Security=True")//"DefaultConnection")
         {
 
         }

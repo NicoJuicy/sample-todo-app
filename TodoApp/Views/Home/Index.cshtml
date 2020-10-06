@@ -25,7 +25,7 @@
 
                                 <div class="view" ng-if="!canEdit(todo)">
 
-                                    <label><input type="checkbox" value="" class="toggle" ng-checked="!todo.IsActive" ng-click="changeCompletedState(todo, todo.IsActive)">{{todo.Description}}</label>
+                                    <label><input type="checkbox" value="" class="toggle" ng-checked="todo.IsCompleted" ng-click="changeCompletedState(todo, !todo.IsCompleted)">{{todo.Description}}</label>
 
                                     <a class="btn btn-danger btn-sm destroy pull-right" ng-click="delete(todo);"><i class="glyphicon glyphicon-remove"></i></a>
                                 </div>
@@ -43,7 +43,7 @@
                             <a class="input-group-addon" id="sizing-addon2" ng-click="search()"><i class="glyphicon glyphicon-search"></i></a>
                             <input type="text" ng-model="q" class="form-control" placeholder="Searchterm" aria-describedby="sizing-addon2">
                         </div>
-                      
+
                     </footer>
                 </div>
 

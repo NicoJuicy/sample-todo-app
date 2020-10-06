@@ -33,13 +33,13 @@ namespace Modules.Todo.Application.CQRS.Queries
 
             ISpecification<Modules.Todo.Core.Entities.TodoAggregate, ITodoSpecificationVisitor> filter;
 
-            if (!request.State.HasValue)
+            if (!request.CompletedState.HasValue)
             {
                 filter = new Core.Specifications.GetAllTodos();
             }
             else
             {
-                filter = new Core.Specifications.TodoByState(request.State.Value);
+                filter = new Core.Specifications.TodoByCompletedState(request.CompletedState.Value);
             }
 
             if (!string.IsNullOrEmpty(request.Q))
@@ -59,13 +59,13 @@ namespace Modules.Todo.Application.CQRS.Queries
     /// </summary>
     public class SearchTodoesQuery : IRequest<IReadOnlyList<TodoResult>>
     {
-        public SearchTodoesQuery(bool? state, string q)
+        public SearchTodoesQuery(bool? completedState, string q)
         {
-            State = state;
+            CompletedState = completedState;
             Q = q;
         }
 
-        public bool? State { get; private set; }
+        public bool? CompletedState { get; private set; }
         public string Q { get; private set; }
     }
 }

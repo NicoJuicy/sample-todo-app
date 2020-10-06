@@ -15,17 +15,17 @@ namespace Modules.Todo.Infrastructure.Mapper
             CreateMap<Documents.TodoDocument, Core.Entities.TodoAggregate>()
            .ForMember(dst => dst.Id, opt => opt.MapFrom(src => new AggregateId(src.Id)))
            .ForMember(dst => dst.On, opt => opt.MapFrom(src => src.On))
-           .ForMember(dst => dst.FinishedOn, opt => opt.MapFrom(src => src.FinishedOn))
+           .ForMember(dst => dst.CompletedOn, opt => opt.MapFrom(src => src.CompletedOn))
            .ForMember(dst => dst.Description, opt => opt.MapFrom(src => src.Description))
-           .ForMember(dst => dst.IsActive, opt => opt.MapFrom(src => src.IsActive));
+           .ForMember(dst => dst.IsCompleted, opt => opt.MapFrom(src => src.IsCompleted));
 
 
             CreateMap<Core.Entities.TodoAggregate, Documents.TodoDocument>()
                .ForMember(dst => dst.Id, opt => opt.MapFrom(src => src.Id.Value))
                .ForMember(dst => dst.On, opt => opt.MapFrom(src => src.On))
-               .ForMember(dst => dst.FinishedOn, opt => opt.MapFrom(src => src.FinishedOn))
+               .ForMember(dst => dst.CompletedOn, opt => opt.MapFrom(src => src.CompletedOn))
                .ForMember(dst => dst.Description, opt => opt.MapFrom(src => src.Description))
-               .ForMember(dst => dst.IsActive, opt => opt.MapFrom(src => src.IsActive));
+               .ForMember(dst => dst.IsCompleted, opt => opt.MapFrom(src => src.IsCompleted));
 
         }
     }

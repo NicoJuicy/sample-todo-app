@@ -13,11 +13,11 @@ namespace Modules.Todo.Application.CQRS.Queries.Dto
 
         public Guid Id { get; set; }
 
-        public bool IsActive { get; set; }
+        public bool IsCompleted { get; set; }
 
         public DateTime On { get; set; }
 
-        public DateTime? ClosedOn { get; set; }
+        public DateTime? CompletedOn { get; set; }
 
     }
 }

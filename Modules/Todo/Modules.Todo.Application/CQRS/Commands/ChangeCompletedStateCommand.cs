@@ -11,41 +11,41 @@ using System.Threading.Tasks;
 namespace Modules.Todo.Application.CQRS.Commands
 {
 
-    public class ChangeStateCommand : IRequest
+    public class ChangeCompletedStateCommand : IRequest
     {
 
-        public ChangeStateCommand(Guid id, bool activeState)
+        public ChangeCompletedStateCommand(Guid id, bool completedState)
         {
             Id = id;
-            ActiveState = activeState;
+            CompletedState = completedState;
 
         }
         public Guid Id { get; }
-        public bool ActiveState { get; }
+        public bool CompletedState { get; }
     }
 
-    public class ChangeStateHandler : IRequestHandler<ChangeStateCommand, Unit>
+    public class ChangeCompletedStateHandler : IRequestHandler<ChangeCompletedStateCommand, Unit>
     {
         private readonly ITodoRepository m_repo;
         private readonly IMediator m_mediator;
 
-        public ChangeStateHandler(ITodoRepository repo, IMediator mediator)
+        public ChangeCompletedStateHandler(ITodoRepository repo, IMediator mediator)
         {
             m_repo = repo;
             m_mediator = mediator;
         }
 
-        public async Task<Unit> Handle(ChangeStateCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(ChangeCompletedStateCommand request, CancellationToken cancellationToken)
         {
 
             var entity = await m_repo.Get(request.Id);
-            if (request.ActiveState)
+            if (request.CompletedState)
             {
-                entity.Open();
+                entity.Complete();
             }
             else
             {
-                entity.Complete();
+                entity.Open();
             }
 
             await m_repo.Update(entity);

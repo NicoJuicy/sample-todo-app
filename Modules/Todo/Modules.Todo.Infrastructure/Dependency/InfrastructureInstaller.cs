@@ -54,7 +54,7 @@ namespace Modules.Todo.Infrastructure.Dependency
                 var indexedColumns = new Expression<Func<Documents.TodoDocument, object>>[]
                 {
                     x => x.Id,
-                    x => x.IsActive
+                    x => x.IsCompleted
                 };
 
                 _.Schema.For<Documents.TodoDocument>().Index(indexedColumns);

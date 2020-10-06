@@ -13,7 +13,7 @@ namespace Modules.Todo.Application.Mapper
         {
             var map = CreateMap<Core.Entities.TodoAggregate, CQRS.Queries.Dto.TodoResult>()
                  .ForMember(el => el.Id, opt => opt.MapFrom(src => src.Id.Value))
-                 .ForMember(el => el.IsActive, opt => opt.MapFrom(src => src.IsActive))
+                 .ForMember(el => el.IsCompleted, opt => opt.MapFrom(src => src.IsCompleted))
                  .ForMember(el => el.On, opt => opt.MapFrom(src => src.On))
                  .ForMember(el => el.Description, opt => opt.MapFrom(src => src.Description));
 

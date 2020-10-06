@@ -60,7 +60,7 @@
     <Compile Include="CQRS\Commands\CreateTodoCommand.cs" />
     <Compile Include="CQRS\Commands\DeleteTodoCommand.cs" />
     <Compile Include="Mapper\TodoProfile.cs" />
-    <Compile Include="CQRS\Commands\ChangeStateCommand.cs" />
+    <Compile Include="CQRS\Commands\ChangeCompletedStateCommand.cs" />
     <Compile Include="CQRS\Queries\Dto\TodoResult.cs" />
     <Compile Include="CQRS\Queries\SearchTodoesQuery.cs" />
     <Compile Include="CQRS\Queries\GetTodoQuery.cs" />

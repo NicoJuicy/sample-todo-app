@@ -20,9 +20,9 @@ namespace Modules.Todo.Core.Entities
 
         public string Description { get; private set; }
 
-        public DateTime? FinishedOn { get; private set; }
+        public DateTime? CompletedOn { get; private set; }
 
-        public bool IsActive { get; private set; } = true;
+        public bool IsCompleted { get; private set; }
 
         public DateTime On { get; private set; }
 
@@ -30,22 +30,21 @@ namespace Modules.Todo.Core.Entities
         {
             var note = new TodoAggregate();
 
-
             note.Description = description;
             return note;
         }
 
         public void Complete()
         {
-            this.FinishedOn = DateTime.UtcNow;
-            this.IsActive = false;
+            this.CompletedOn = DateTime.UtcNow;
+            this.IsCompleted = true;
             this.AddEvent(new Events.TodoClosedEvent(this.Id));
         }
 
         public void Open()
         {
-            this.FinishedOn = null;
-            this.IsActive = true;
+            this.CompletedOn = null;
+            this.IsCompleted = false;
             this.AddEvent(new Events.TodoOpenedEvent(this.Id));
         }
     }

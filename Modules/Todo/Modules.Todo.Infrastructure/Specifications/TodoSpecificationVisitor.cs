@@ -21,7 +21,7 @@ namespace Modules.Todo.Infrastructure.Specifications
             return this.Expr;
         }
 
-        public void Visit(TodoByState spec) => Expr = expr => expr.IsActive == spec.State;
+        public void Visit(TodoByCompletedState spec) => Expr = expr => expr.IsCompleted == spec.CompletedState;
         public void Visit(TodoByDescription spec) => Expr = expr => expr.Description.Contains(spec.Q);
         public void Visit(TodoById spec) => Expr = expr => expr.Id == spec.Id;
         public void Visit(GetAllTodos spec) => Expr = expr => true;
