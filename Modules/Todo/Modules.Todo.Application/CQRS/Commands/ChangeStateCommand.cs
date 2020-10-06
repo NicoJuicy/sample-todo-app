@@ -45,7 +45,7 @@ namespace Modules.Todo.Application.CQRS.Commands
             }
             else
             {
-                entity.Close();
+                entity.Complete();
             }
 
             await m_repo.Update(entity);

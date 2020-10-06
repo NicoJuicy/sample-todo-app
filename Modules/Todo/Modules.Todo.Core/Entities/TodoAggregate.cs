@@ -35,7 +35,7 @@ namespace Modules.Todo.Core.Entities
             return note;
         }
 
-        public void Close()
+        public void Complete()
         {
             this.FinishedOn = DateTime.UtcNow;
             this.IsActive = false;
