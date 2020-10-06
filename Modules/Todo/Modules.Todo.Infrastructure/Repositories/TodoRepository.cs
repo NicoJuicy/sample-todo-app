@@ -23,7 +23,7 @@ namespace Modules.Todo.Infrastructure.Repositories
 
         private readonly Specifications.TodoSpecificationVisitor m_specVisitor;
 
-        private readonly IDocumentSession m_session; //Todo: candidate for singleton in IoC 
+        private readonly IDocumentSession m_session;
 
         public TodoRepository(IDocumentStore documentStore, IDocumentSession session, IMapper mapper)
         {
@@ -39,12 +39,6 @@ namespace Modules.Todo.Infrastructure.Repositories
             m_session.Delete(_item);
             await m_session.SaveChangesAsync();
         }
-
-        //public void Dispose()
-        //{
-        //    Dispose(true);
-        //    GC.SuppressFinalize(this);
-        //}
 
         public async Task<IReadOnlyList<TodoAggregate>> Get(ISpecification<TodoAggregate, ITodoSpecificationVisitor> spec)
         {
@@ -74,12 +68,5 @@ namespace Modules.Todo.Infrastructure.Repositories
             await m_session.SaveChangesAsync();
         }
 
-        //protected virtual void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        m_session.Dispose();
-        //    }
-        //}
     }
 }
